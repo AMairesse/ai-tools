@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Audio transcription</title>
+</head>
+<body>
+  <h1>Audio transcription</h1>
+  
+  <button id="startButton">Start Recording</button>
+  <button id="french">French</button>
+  <button id="english" disabled>English</button>
+
+  <script defer src="main.js"></script>
+
+  <div class="mt-4">
+    <h4>Result</h4>
+    <textarea id="outputAreaMic" rows="4" style="width: 100%; resize: none;" readonly oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px';"></textarea>
+    <button id="copyButton">Copy to Clipboard</button>
+    <button id="clearButton">Clear</button>
+  </div>
+</body>
+<script>
+  document.getElementById('copyButton').addEventListener('click', function() {
+    const outputArea = document.getElementById('outputAreaMic');
+    outputArea.select();
+    document.execCommand('copy');
+  });
+  document.getElementById('clearButton').addEventListener('click', function() {
+    document.getElementById('outputAreaMic').textContent = '';
+  });
+</script>
+</html>
